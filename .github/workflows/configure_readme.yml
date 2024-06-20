@@ -1,0 +1,11 @@
+if: contains(github.event.head_commit.message, 'Classroom')
+steps:
+  - uses: actions/checkout@v4
+  - uses: franzbischoff/replace_envs@v1
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      MY_CUSTOM_VARIABLE: 'some value'
+    with:
+      from_file: 'README.md'
+      to_file: 'README.md'
+      commit: 'true'
